@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(href='/styles.css' rel='stylesheet')
+    script(src="https://kit.fontawesome.com/533c2217e7.js" crossorigin="anonymous")
+    title Dashboard Page
+  body
+    .container.flex.flex-row
+      aside.h-screen.p-0.m-0
+        include sidebar.pug
+      main.flex-grow.p-0.m-0
+        include nav.pug
+
+
+//- a(class="text-gray-300 hover:text-white cursor-pointer")
+//-  i(class="fas fa-bell text-gray-300 hover:text-white")

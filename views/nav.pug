@@ -1,0 +1,232 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Dashboard
+    script(src="https://cdn.tailwindcss.com")
+    script(defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+
+  body(class="bg-[#121212] text-white")
+    div(class="p-6  min-h-screen")
+      //- Search Bar and Header
+      div(class="flex items-center justify-between mb-12")
+        div(class="relative")
+          div(class="flex items-center bg-[#1E1E1E] rounded-lg px-4 py-2.5 w-full")
+            svg(class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+              path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z")
+            input(
+              type="text" 
+              placeholder="Search..."
+              class="bg-transparent border-none focus:outline-none ml-2 w-full text-gray-300"
+            )
+
+        div(class="flex items-center gap-6")
+          div(class="flex items-center gap-2")
+            svg(class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+              path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M17.536 6.464a7 7 0 010 11.072")
+            span(class="text-gray-300") Feedback?
+
+          div(class="flex items-center gap-2")
+            span(class="bg-pink-500 text-xs rounded-full h-5 w-5 flex items-center justify-center") 2
+            span(class="bg-gray-700 rounded-full h-5 w-5 flex items-center justify-center") ?
+            svg(class="h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+              path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22")
+
+            //- Profile Dropdown using Alpine.js
+            div(
+              x-data="{ open: false }" 
+              @click.outside="open = false"
+              class="relative"
+            )
+              img(
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ui.jpg-qGyC3XVCiOx5LsK1Amh6g8sddZ4AG3.jpeg"
+                @click="open = !open"
+                alt="Profile"
+                class="h-8 w-8 rounded-full object-cover cursor-pointer"
+              )
+              //- Dropdown Menu
+              div(
+                x-show="open"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="transform opacity-0 scale-95"
+                x-transition:enter-end="transform opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="transform opacity-100 scale-100"
+                x-transition:leave-end="transform opacity-0 scale-95"
+                class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#1E1E1E] ring-1 ring-black ring-opacity-5 z-50"
+              )
+                div(class="py-1")
+                  a(href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700") Your Profile
+                  a(href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700") Settings
+                  a(href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700") Sign out
+
+      //- Main Content
+      div(class="flex gap-2")
+        div(class="flex-1")
+          h1(class="text-2xl font-bold mb-6") Available Balance
+
+          //- Insurance Cards Grid
+          div(class="grid grid-cols-3  mb-8")
+            //- Auto Insurance Card
+            div(class="bg-[#0066FF] rounded-2xl p-6 w-[250px]")
+              div(class="flex items-center gap-3 mb-4")
+                div(class="p-2 bg-blue-500/30 rounded-lg")
+                  svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                    path(d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z")
+                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10")
+                div
+                  div(class="font-medium") Auto Insurance
+                  div(class="text-sm text-blue-200") 1311 Cars
+              div(class="mb-4")
+                div(class="flex items-center gap-2")
+                  span(class="text-3xl font-bold") $45,910
+                  span(class="text-green-400") +4.5%
+              div(class="flex justify-between text-sm")
+                div
+                  div(class="text-blue-200") ↓100,930
+                  div USD
+                div
+                  div(class="text-blue-200") ↑54,120
+                  div USD
+                div
+                  div(class="text-blue-200") ★125
+                  div VIP
+
+            //- Health Insurance Card
+            div(class="bg-[#1E1E1E] rounded-2xl p-6  w-[250px]")
+              div(class="flex items-center gap-3 mb-4")
+                div(class="p-2 bg-gray-800 rounded-lg")
+                  svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z")
+                div
+                  div(class="font-medium") Health Insurance
+                  div(class="text-sm text-gray-400") +2400 People
+              div(class="mb-4")
+                div(class="flex items-center gap-2")
+                  span(class="text-3xl font-bold") $12,138
+                  span(class="text-red-500") -4.5%
+              div(class="flex justify-between text-sm")
+                div
+                  div(class="text-gray-400") ↓11,930
+                  div USD
+                div
+                  div(class="text-gray-400") ↑54,120
+                  div USD
+                div
+                  div(class="text-gray-400") ★150
+                  div VIP
+
+            //- Card Insurance
+            div(class="bg-[#00C853] rounded-2xl p-6  w-[250px]")
+              div(class="flex items-center gap-3 mb-4")
+                div(class="p-2 bg-green-500/30 rounded-lg")
+                  svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z")
+                div
+                  div(class="font-medium") Card Insurance
+                  div(class="text-sm text-green-100") 1311 Cars
+              div(class="mb-4")
+                div(class="flex items-center gap-2")
+                  span(class="text-3xl font-bold") $3,910
+                  span(class="text-red-500") -4.5%
+              div(class="flex justify-between text-sm")
+                div
+                  div(class="text-green-100") ↓100,930
+                  div USD
+                div
+                  div(class="text-green-100") ↑4,120
+                  div USD
+                div
+                  div(class="text-green-100") ★125
+                  div VIP
+
+          //- Statistics Section
+          div
+            h2(class="text-2xl font-bold mb-6") Statistics
+            div(class="bg-[#1E1E1E] rounded-2xl p-2 w-[full] h-[400px] ")
+              //- canvas(id="chart" class="w-full h-full")
+              canvas#statisticsChart.w-full(height="400px")
+
+        //- Notifications Sidebar
+        div(class="w-[380px] bg-[#1E1E1E] rounded-2xl p-6")
+          h2(class="text-xl mb-6") Section
+
+          //- Notification Items
+          include section.pug
+
+          //- Latest Transactions
+          div
+            h3(class="text-xl mb-6") Latest Transactions
+            div(class="space-y-6")
+              each val in [1, 2, 3]
+                div(class="flex items-center justify-between")
+                  div(class="flex items-center gap-3")
+                    img(
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ui.jpg-qGyC3XVCiOx5LsK1Amh6g8sddZ4AG3.jpeg"
+                      alt="User"
+                      class="w-10 h-10 rounded-full object-cover"
+                    )
+                    div
+                      div(class="font-medium") Jose Perez
+                      div(class="text-[#00C853]") 4500 USD
+                  div(class="text-sm text-gray-400") 9/20/2021
+
+script.
+      // Chart initialization
+      const ctx = document.getElementById('statisticsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997'],
+          datasets: [
+            {
+              label: 'Series1',
+              data: [35, 40, 36, 45, 40, 114, 108],
+              fill: true,
+              backgroundColor: 'rgba(59, 130, 246, 0.2)',
+              borderColor: 'rgb(59, 130, 246)',
+              tension: 0.4
+            },
+            {
+              label: 'Series2',
+              data: [40, 74, 70, 81, 78, 165, 140],
+              fill: true,
+              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              borderColor: 'rgb(16, 185, 129)',
+              tension: 0.4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: 'white'
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: 'white'
+              },
+            },
+            x: {
+              //- grid: {
+              //-   color: 'rgba(255, 255, 255, 0.1)'
+              //- },
+              ticks: {
+                color: 'white'
+              }
+            }
+          }
+        }
+      });
