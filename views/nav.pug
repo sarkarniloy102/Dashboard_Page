@@ -14,7 +14,7 @@ html(lang="en")
       //- Search Bar and Header
       div(class="grid grid-cols-2 items-center justify-between mb-12 border-b pb-3 border-gray-700")
         div(class="relative")
-          div(class="flex items-center bg-[#1E1E1E] rounded-lg px-4 py-2.5 w-full")
+          div(class="hidden md:flex items-center bg-[#1E1E1E] rounded-lg px-4 py-2.5 w-full")
             svg(class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
               path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z")
             input(
@@ -23,11 +23,11 @@ html(lang="en")
               class="bg-transparent border-none focus:outline-none ml-2  text-gray-300"
             )
           //- 2
-        div(class="flex items-center justify-end gap-4")
+        div(class="flex  items-center justify-end gap-4")
           div(class="flex items-center gap-2")
             svg(class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
               path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M17.536 6.464a7 7 0 010 11.072")
-            span(class="text-gray-300 text-lg font-semibold") Feedback?
+            span(class="hidden md:flex text-gray-300 text-lg font-semibold") Feedback?
 
           div(class="flex items-center gap-5")
             button#notificationBtn.flex.items-center.gap-2.p-2.hover_bg-gray-800.rounded-md.transition-colors
@@ -85,13 +85,13 @@ html(lang="en")
 
       //- Main Content
       div(class="flex flex-col lg:flex-row gap-2")
-        div(class="flex-1")
+        div(class="lg:flex-1")
           h1(class="text-2xl font-bold mb-6") Available Balance
 
           //- Insurance Cards Grid
-          div(class="grid grid-cols-1 md_grid-cols-2 lg_grid-cols-3 gap-2 w-full  mb-8")
+          div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2   mb-8")
             //- Auto Insurance Card
-            div(class="bg-[#0066FF] rounded-2xl p-6 w-[250px]")
+            div(class="bg-[#0066FF] rounded-2xl p-6 w-full md:w-[250px]")
               div(class="flex items-center gap-3 mb-4")
                 div(class="p-2 bg-blue-500/30 rounded-lg")
                   svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
@@ -116,7 +116,7 @@ html(lang="en")
                   div VIP
 
             //- Health Insurance Card
-            div(class="bg-[#1E1E1E] rounded-2xl p-6  w-[250px]")
+            div(class="bg-[#1E1E1E] rounded-2xl p-6 w-full md:w-[250px]")
               div(class="flex items-center gap-3 mb-4")
                 div(class="p-2 bg-gray-800 rounded-lg")
                   svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
@@ -140,7 +140,7 @@ html(lang="en")
                   div VIP
 
             //- Card Insurance
-            div(class="bg-[#00C853] rounded-2xl p-6  w-[250px]")
+            div(class="bg-[#00C853] rounded-2xl p-6  w-full md:w-[250px]")
               div(class="flex items-center gap-3 mb-4")
                 div(class="p-2 bg-green-500/30 rounded-lg")
                   svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
@@ -170,29 +170,15 @@ html(lang="en")
               //- canvas(id="chart" class="w-full h-full")
               canvas#statisticsChart.w-full(height="400px")
 
-        //- Notifications Sidebar
+        //- section
         div()
           h2(class="text-xl mb-6") Section
 
-          //- Notification Items
+          //- agent
           include section.pug
 
           //- Latest Transactions
-          div(class="w-[380px] bg-[#1E1E1E] rounded-2xl p-6")
-            h3(class="text-xl mb-6") Latest Transactions
-            div(class="space-y-6")
-              each val in [1, 2, 3]
-                div(class="flex items-center justify-between")
-                  div(class="flex items-center gap-3")
-                    img(
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ui.jpg-qGyC3XVCiOx5LsK1Amh6g8sddZ4AG3.jpeg"
-                      alt="User"
-                      class="w-10 h-10 rounded-full object-cover"
-                    )
-                    div
-                      div(class="font-medium") Jose Perez
-                      div(class="text-[#00C853]") 4500 USD
-                  div(class="text-sm text-gray-400") 9/20/2021
+          include transaction.pug
 
 script.
   // Chart initialization

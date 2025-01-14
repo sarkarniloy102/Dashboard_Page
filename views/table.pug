@@ -1,0 +1,154 @@
+//- table.pug
+
+block content
+  .min-h-screen
+    .max-w-7xl.mx-auto.p-6
+      //- Header Section
+      .flex.justify-between.items-center.mb-6
+        h2.text-2xl.font-bold.text-white Latest Users
+        a.text-blue-500.hover_text-blue-400(href="#") View All
+
+      //- Table Section
+      .overflow-x-auto(class='bg-[#1E1E1E]').rounded-lg
+        table.min-w-full
+          //- Table Header
+          thead
+            tr.border-b.border-gray-700
+              th.text-left.p-4.text-sm.font-medium.text-gray-400 NAME
+              th.text-left.p-4.text-sm.font-medium.text-gray-400 ROLE
+              th.text-left.p-4.text-sm.font-medium.text-gray-400 STATUS
+              th.text-right.p-4.text-sm.font-medium.text-gray-400 ACTIONS
+
+          //- Table Body
+          tbody.divide-y.divide-gray-700
+            - 
+              const users = [
+                { 
+                  name: 'Tony Reichert',
+                  role: 'CEO',
+                  department: 'Management',
+                  status: 'Active',
+                  image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d'
+                },
+                {
+                  name: 'Zoey Lang',
+                  role: 'Technical Lead',
+                  department: 'Development',
+                  status: 'Paused',
+                  image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d'
+                },
+                {
+                  name: 'Jane Fisher',
+                  role: 'Senior Developer',
+                  department: 'Development',
+                  status: 'Active',
+                  image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d'
+                },
+                {
+                  name: 'William Howard',
+                  role: 'Community Manager',
+                  department: 'Marketing',
+                  status: 'Vacation',
+                  image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d'
+                },
+                {
+                  name: 'Kristen Copper',
+                  role: 'Sales Manager',
+                  department: 'Sales',
+                  status: 'Active',
+                  image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d'
+                },
+                {
+                   name: 'Tony Reichert',
+                   role: 'CEO',
+                   department: 'Management',
+                   status: 'Active',
+                   image: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+                },
+                {
+                    name: 'Kristen Copper',
+                    role: 'Sales Manager',
+                    department: 'Sales',
+                    status: 'Active',
+                    image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d',
+                },
+                {
+                    name: 'Jane Fisher',
+                    role: 'Senior Developer',
+                    department: 'Development',
+                    status: 'Active',
+                    image: 'https://i.pravatar.cc/150?u=a04258114e29026702d',
+                },
+                {
+                    name: 'Zoey Lang',
+                    role: 'Technical Lead',
+                    department: 'Development',
+                    status: 'Paused',
+                    image: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
+                },
+                {
+                    name: 'William Howard',
+                    role: 'Community Manager',
+                   department: 'Marketing',
+                    status: 'Vacation',
+                    image: 'https://i.pravatar.cc/150?u=a048581f4e29026701d',
+                 },
+                 {
+                    name: 'Tony Reichert',
+                    role: 'CEO',
+                    department: 'Management',
+                    status: 'Active',
+                    image: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+                 },
+                 {
+                    name: 'Kristen Copper',
+                    role: 'Sales Manager',
+                    department: 'Sales',
+                    status: 'Active',
+                    image: 'https://i.pravatar.cc/150?u=a092581d4ef9026700d',
+                 }
+              ]
+
+            each user of users
+              tr.hover_bg-gray-700
+                //- Name Column
+                td.p-4
+                  .flex.items-center.gap-3
+                    .w-10.h-10.rounded-full.overflow-hidden.flex-shrink-0
+                      img.w-full.h-full.object-cover(src=user.image alt=user.name)
+                    span.text-white.font-medium= user.name
+
+                //- Role Column
+                td.p-4
+                  .flex.flex-col
+                    span.text-white.font-medium= user.role
+                    span.text-sm.text-gray-400= user.department
+
+                //- Status Column
+                td.p-4
+                  case user.status
+                    when 'Active'
+                      span.text-xs.font-medium.bg-green-500
+                      .text-green-500= user.status
+                    when 'Paused'
+                      span.text-xs.font-medium.bg-pink-500
+                      .text-pink-500= user.status
+                    when 'Vacation'
+                      span.text-xs.font-medium.bg-yellow-500
+                      .text-yellow-500= user.status
+
+                //- Actions Column
+                td.p-4
+                  .flex.justify-end.gap-2
+                    button.p-2.hover_bg-gray-600.rounded-lg.transition-colors(title="View")
+                      svg.w-5.h-5.text-gray-400(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z")
+                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z")
+
+                    button.p-2.hover_bg-gray-600.rounded-lg.transition-colors(title="Edit")
+                      svg.w-5.h-5.text-gray-400(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z")
+
+                    button.p-2.hover_bg-gray-600.rounded-lg.transition-colors(title="Delete")
+                      svg.w-5.h-5.text-pink-500(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16")
