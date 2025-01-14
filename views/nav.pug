@@ -7,11 +7,12 @@ html(lang="en")
     script(src="https://cdn.tailwindcss.com")
     script(defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js")
     script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css")
 
-  body(class="bg-[#121212] text-white")
-    div(class="p-6  min-h-screen")
+  body(class="bg-black text-white transition-all duration-300")
+    div(class="p-6 min-h-screen md:p-4 sm:p-2")
       //- Search Bar and Header
-      div(class="flex items-center justify-between mb-12")
+      div(class="grid grid-cols-2 items-center justify-between mb-12 border-b pb-3 border-gray-700")
         div(class="relative")
           div(class="flex items-center bg-[#1E1E1E] rounded-lg px-4 py-2.5 w-full")
             svg(class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
@@ -19,56 +20,76 @@ html(lang="en")
             input(
               type="text" 
               placeholder="Search..."
-              class="bg-transparent border-none focus:outline-none ml-2 w-full text-gray-300"
+              class="bg-transparent border-none focus:outline-none ml-2  text-gray-300"
             )
-
-        div(class="flex items-center gap-6")
+          //- 2
+        div(class="flex items-center justify-end gap-4")
           div(class="flex items-center gap-2")
             svg(class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
               path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M17.536 6.464a7 7 0 010 11.072")
-            span(class="text-gray-300") Feedback?
+            span(class="text-gray-300 text-lg font-semibold") Feedback?
 
-          div(class="flex items-center gap-2")
-            span(class="bg-pink-500 text-xs rounded-full h-5 w-5 flex items-center justify-center") 2
-            span(class="bg-gray-700 rounded-full h-5 w-5 flex items-center justify-center") ?
-            svg(class="h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+          div(class="flex items-center gap-5")
+            button#notificationBtn.flex.items-center.gap-2.p-2.hover_bg-gray-800.rounded-md.transition-colors
+              .relative
+                svg.w-6.h-6.text-gray-400(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                  path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9")
+
+          span(class="bg-gray-700 rounded-full h-5 w-5 flex items-center justify-center") ?
+          a(href="https://github.com/sarkarniloy102" class="h-6 w-6 cursor-pointer text-gray-400")
+            svg(class="h-6 w-6 cursor-pointer text-gray-400 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
               path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22")
 
-            //- Profile Dropdown using Alpine.js
-            div(
-              x-data="{ open: false }" 
-              @click.outside="open = false"
-              class="relative"
+
+          //- Profile Dropdown using Alpine.js
+          div(
+            x-data="{ open: false }" 
+            @click.outside="open = false"
+            class="relative"
+          )
+            img(
+              src="https://i.ibb.co.com/5nvd5Cy/profile.jpg"
+              @click="open = !open"
+              alt="Profile"
+              class="h-8 w-8 rounded-full object-cover cursor-pointer"
             )
-              img(
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ui.jpg-qGyC3XVCiOx5LsK1Amh6g8sddZ4AG3.jpeg"
-                @click="open = !open"
-                alt="Profile"
-                class="h-8 w-8 rounded-full object-cover cursor-pointer"
-              )
-              //- Dropdown Menu
-              div(
-                x-show="open"
-                x-transition:enter="transition ease-out duration-100"
-                x-transition:enter-start="transform opacity-0 scale-95"
-                x-transition:enter-end="transform opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-75"
-                x-transition:leave-start="transform opacity-100 scale-100"
-                x-transition:leave-end="transform opacity-0 scale-95"
-                class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#1E1E1E] ring-1 ring-black ring-opacity-5 z-50"
-              )
-                div(class="py-1")
-                  a(href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700") Your Profile
-                  a(href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700") Settings
-                  a(href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700") Sign out
+            //- Dropdown Menu
+            div(
+              x-show="open"
+              x-transition:enter="transition ease-out duration-100"
+              x-transition:enter-start="transform opacity-0 scale-95"
+              x-transition:enter-end="transform opacity-100 scale-100"
+              x-transition:leave="transition ease-in duration-75"
+              x-transition:leave-start="transform opacity-100 scale-100"
+              x-transition:leave-end="transform opacity-0 scale-95"
+              class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#1E1E1E] ring-1 ring-black ring-opacity-5 z-50"
+            )
+              div(class="py-1")
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-gray-300 rounded-lg hover:bg-gray-700") Signed in as
+                  |zoey@example.com
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-bolder text-gray-300 rounded-lg hover:bg-gray-700") My Settings
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-500 text-gray-300 rounded-lg hover:bg-gray-700") Team Settings
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-gray-300 rounded-lg hover:bg-gray-700") Analytics
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-gray-300 rounded-lg hover:bg-gray-700") System
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-gray-300 rounded-lg hover:bg-gray-700") Configurations
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-gray-300 rounded-lg hover:bg-gray-700") Help & Feedback
+                a(href="#" class="block px-4 py-2 text-sm font-bold text-red-300 rounded-lg hover:bg-pink-500 hover:text-white") Log Out
+                <label for="theme-toggle" class="inline-flex items-center  space-x-4 cursor-pointer dark:text-gray-100">
+                  <span class="relative ml-5">
+                    <input id="theme-toggle" type="checkbox" class="hidden peer">
+                    <div class="w-10 h-6 rounded-full shadow-inner dark:bg-gray-400 peer-checked:dark:bg-violet-400"></div>
+                    <div class="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow peer-checked:right-0 peer-checked:left-auto dark:bg-gray-800"></div>
+                  </span>
+                </label>
+
 
       //- Main Content
-      div(class="flex gap-2")
+      div(class="flex flex-col lg:flex-row gap-2")
         div(class="flex-1")
           h1(class="text-2xl font-bold mb-6") Available Balance
 
           //- Insurance Cards Grid
-          div(class="grid grid-cols-3  mb-8")
+          div(class="grid grid-cols-1 md_grid-cols-2 lg_grid-cols-3 gap-2 w-full  mb-8")
             //- Auto Insurance Card
             div(class="bg-[#0066FF] rounded-2xl p-6 w-[250px]")
               div(class="flex items-center gap-3 mb-4")
@@ -150,14 +171,14 @@ html(lang="en")
               canvas#statisticsChart.w-full(height="400px")
 
         //- Notifications Sidebar
-        div(class="w-[380px] bg-[#1E1E1E] rounded-2xl p-6")
+        div()
           h2(class="text-xl mb-6") Section
 
           //- Notification Items
           include section.pug
 
           //- Latest Transactions
-          div
+          div(class="w-[380px] bg-[#1E1E1E] rounded-2xl p-6")
             h3(class="text-xl mb-6") Latest Transactions
             div(class="space-y-6")
               each val in [1, 2, 3]
@@ -174,59 +195,73 @@ html(lang="en")
                   div(class="text-sm text-gray-400") 9/20/2021
 
 script.
-      // Chart initialization
-      const ctx = document.getElementById('statisticsChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997'],
-          datasets: [
-            {
-              label: 'Series1',
-              data: [35, 40, 36, 45, 40, 114, 108],
-              fill: true,
-              backgroundColor: 'rgba(59, 130, 246, 0.2)',
-              borderColor: 'rgb(59, 130, 246)',
-              tension: 0.4
-            },
-            {
-              label: 'Series2',
-              data: [40, 74, 70, 81, 78, 165, 140],
-              fill: true,
-              backgroundColor: 'rgba(16, 185, 129, 0.2)',
-              borderColor: 'rgb(16, 185, 129)',
-              tension: 0.4
-            }
-          ]
+  // Chart initialization
+  const ctx = document.getElementById('statisticsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['1991', '1992', '1993', '1994', '1995', '1996', '1997'],
+      datasets: [
+        {
+          label: 'Series1',
+          data: [35, 40, 36, 45, 40, 114, 108],
+          fill: true,
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          borderColor: 'rgb(59, 130, 246)',
+          tension: 0.4
         },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
-                color: 'white'
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: 'rgba(255, 255, 255, 0.1)'
-              },
-              ticks: {
-                color: 'white'
-              },
-            },
-            x: {
-              //- grid: {
-              //-   color: 'rgba(255, 255, 255, 0.1)'
-              //- },
-              ticks: {
-                color: 'white'
-              }
-            }
+        {
+          label: 'Series2',
+          data: [40, 74, 70, 81, 78, 165, 140],
+          fill: true,
+          backgroundColor: 'rgba(16, 185, 129, 0.2)',
+          borderColor: 'rgb(16, 185, 129)',
+          tension: 0.4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: 'white'
           }
         }
-      });
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          ticks: {
+            color: 'white'
+          },
+        },
+        x: {
+          //- grid: {
+          //-   color: 'rgba(255, 255, 255, 0.1)'
+          //- },
+          ticks: {
+            color: 'white'
+          }
+        }
+      }
+    }
+  });
+
+  //- 
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const body = document.body;
+      if (body.classList.contains('bg-gray-900')) {
+        body.classList.remove('bg-gray-900', 'text-white');
+        body.classList.add('bg-white', 'text-black');
+      } else {
+        body.classList.remove('bg-white', 'text-black');
+        body.classList.add('bg-gray-900', 'text-white');
+      }
+    });

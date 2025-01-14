@@ -1,15 +1,13 @@
-section.bg-black.text-white.p-6.rounded-md.shadow-lg
+section.text-white.p-6(class="w-[380px] bg-[#1E1E1E] rounded-2xl p-10 mb-10")
   .text-center
     .flex.items-center.justify-center.gap-2.mb-4
-      span.text-yellow-400.text-xl.font-semibold
+      span.flex.items-center.justify-between.px-5.py-2.gap-2.text-yellow-400.text-xl.font-semibold.border.border-dashed.rounded-lg.border-gray-700
         i.fas.fa-star
-      h2.text-xl.font-bold Agents
+        h2.text-xl.font-bold Agents
     p.text-gray-400.text-sm.mb-6 Meet your agenda and see their ranks to get the best results
   .flex.items-center.justify-center.gap-2
-    //- Avatar Images
-    each avatar, index in ['avatar1.jpg', 'avatar2.jpg', 'avatar3.jpg', 'avatar4.jpg', 'avatar5.jpg']
+    each avatar, index in ['https://via.placeholder.com/150', './images/profile.jpg', './images/avatar3.jpg', './images/avatar4.jpg', './images/avatar5.jpg']
       if index < 5
         div.w-10.h-10.rounded-full.overflow-hidden.border-2.border-gray-600
-          img(src=`/path-to-avatars/${avatar}` alt="Agent Avatar" class="w-full h-full object-cover")
-    //- +1 Badge
+          img(src=avatar alt="Agent Avatar" class="w-full h-full object-cover")
     div.w-10.h-10.flex.items-center.justify-center.rounded-full.bg-gray-800.text-white.text-sm.border-2.border-gray-600 +1
