@@ -13,10 +13,37 @@ aside.w-56(class="bg-[#0A0A0A] text-white font-bold  flex flex-col")
         path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7")
 
     #companyMenu.hidden.absolute.left-4.mt-2.w-56.rounded-md.shadow-lg.bg-gray-800.ring-1.ring-black.ring-opacity-5.z-50
-      .py-1
-        a.block.px-4.py-2.text-sm.text-gray-300.hover_bg-gray-700(href="#") Switch Organization
-        a.block.px-4.py-2.text-sm.text-gray-300.hover_bg-gray-700(href="#") Organization Settings
-        a.block.px-4.py-2.text-sm.text-gray-300.hover_bg-gray-700(href="#") Manage Team
+      .p-3
+        .flex.flex-row.items-center.gap-3.p-2.hover_bg-gray-700.rounded-lg.mb-2
+          svg.w-5.h-5(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+            path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+          .flex.flex-col.items-start
+            span.font-semibold Facebook
+            span.text-xs.text-gray-400 San Fransisco,CA
+            //- 2
+        .flex.flex-row.items-center.gap-3.p-2.hover_bg-gray-700.rounded-lg.mb-2
+          svg.w-5.h-5(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+            path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+          .flex.flex-col.items-start
+            span.font-semibold Instagram
+            span.text-xs.text-gray-400 Austin, Tx
+
+        //- 3
+        .flex.flex-row.items-center.gap-3.p-2.hover_bg-gray-700.rounded-lg.mb-2
+          svg.w-5.h-5(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+            path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+          .flex.flex-col.items-start
+            span.font-semibold Twitter
+            span.text-xs.text-gray-400 Brooklyn,NY
+        
+        //- 4
+        .flex.flex-row.items-center.gap-3.p-2.hover_bg-gray-700.rounded-lg.mb-2
+          svg.w-5.h-5(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+            path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16")
+          .flex.flex-col.items-start
+            span.font-semibold Acme Co.
+            span.text-xs.text-gray-400 Palo Alto, CA
+
 
   // Navigation Menu
   nav.flex-1.px-2.py-4.space-y-6
@@ -51,9 +78,9 @@ aside.w-56(class="bg-[#0A0A0A] text-white font-bold  flex flex-col")
               path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7")
 
           #balancesMenu.hidden.ml-12.space-y-1
-            a.block.text-gray-300.hover_bg-gray-800.rounded-md.py-2.px-3.text-sm(href="#") Overview
-            a.block.text-gray-300.hover_bg-gray-800.rounded-md.py-2.px-3.text-sm(href="#") Transactions
-            a.block.text-gray-300.hover_bg-gray-800.rounded-md.py-2.px-3.text-sm(href="#") Reports
+            a.block.text-gray-300.hover_bg-gray-800.rounded-md.py-2.px-3.text-sm(href="#") Bank Accounts
+            a.block.text-gray-300.hover_bg-gray-800.rounded-md.py-2.px-3.text-sm(href="#") Credit Cards
+            a.block.text-gray-300.hover_bg-gray-800.rounded-md.py-2.px-3.text-sm(href="#") Loans
 
           //-  customers
       a.flex.items-center.gap-3.w-full.text-gray-300.hover_bg-gray-800.rounded-md.px-2(href="#")
