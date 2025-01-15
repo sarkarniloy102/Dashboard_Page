@@ -1,0 +1,52 @@
+style.
+  .sidebar {
+    transition: width 0.5s, margin-left 0.5s;
+  }
+  .main-content {
+    transition: margin-left 0.5s;
+  }
+
+  aside.p-0.m-0
+    // Sidebar
+#mySidebar.fixed.top-0.left-0.h-full.bg-gray-900.overflow-x-hidden.pt-16.z-10.sidebar(class="w-0")
+  // Close button
+  button.absolute.top-4.right-6.text-4xl.text-gray-400.hover_text-white(onclick="closeNav()") ×
+
+  // Sidebar links
+  .flex.flex-col.space-y-2
+    include sidebar.pug
+
+// Main content
+#main.main-content.p-4
+  button.px-4.py-2.bg-gray-900.text-white.hover_bg-gray-700.transition-colors.rounded-md(onclick="openNav()") 
+    span ☰
+
+
+script.
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+  // Close sidebar on window resize if open (prevents sidebar from staying open when switching to mobile)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+      closeNav();
+    }
+  });
+
+  // Add click outside to close
+  document.addEventListener('click', (e) => {
+    const sidebar = document.getElementById('mySidebar');
+    const toggleBtn = document.querySelector('button[onclick="openNav()"]');
+
+    if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target) && sidebar.style.width === '250px') {
+      closeNav();
+    }
+  });
+  

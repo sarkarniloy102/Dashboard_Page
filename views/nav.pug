@@ -12,9 +12,10 @@ html(lang="en")
   body(class="bg-black text-white transition-all duration-300")
     div(class="p-6 min-h-screen md:p-4 sm:p-2")
       //- Search Bar and Header
-      div(class="grid grid-cols-2 items-center justify-between mb-12 border-b pb-3 border-gray-700")
+      div(class="flex justify-between items-center  mb-12 border-b pb-3 border-gray-700")
+        include drawer.pug
         div(class="relative")
-          div(class="hidden md:flex items-center bg-[#1E1E1E] rounded-lg px-4 py-2.5 w-full")
+          div(class="hidden lg:flex items-center bg-[#1E1E1E] rounded-lg px-4 py-2.5 w-[2px] lg:w-[1000px]")
             svg(class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
               path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z")
             input(
@@ -91,77 +92,15 @@ html(lang="en")
           //- Insurance Cards Grid
           div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2   mb-8")
             //- Auto Insurance Card
-            div(class="bg-[#0066FF] rounded-2xl p-6 w-full md:w-[250px]")
-              div(class="flex items-center gap-3 mb-4")
-                div(class="p-2 bg-blue-500/30 rounded-lg")
-                  svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-                    path(d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z")
-                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10")
-                div
-                  div(class="font-medium") Auto Insurance
-                  div(class="text-sm text-blue-200") 1311 Cars
-              div(class="mb-4")
-                div(class="flex items-center gap-2")
-                  span(class="text-3xl font-bold") $45,910
-                  span(class="text-green-400") +4.5%
-              div(class="flex justify-between text-sm")
-                div
-                  div(class="text-blue-200") ↓100,930
-                  div USD
-                div
-                  div(class="text-blue-200") ↑54,120
-                  div USD
-                div
-                  div(class="text-blue-200") ★125
-                  div VIP
+            include auto_insurance.pug
+
 
             //- Health Insurance Card
-            div(class="bg-[#1E1E1E] rounded-2xl p-6 w-full md:w-[250px]")
-              div(class="flex items-center gap-3 mb-4")
-                div(class="p-2 bg-gray-800 rounded-lg")
-                  svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z")
-                div
-                  div(class="font-medium") Health Insurance
-                  div(class="text-sm text-gray-400") +2400 People
-              div(class="mb-4")
-                div(class="flex items-center gap-2")
-                  span(class="text-3xl font-bold") $12,138
-                  span(class="text-red-500") -4.5%
-              div(class="flex justify-between text-sm")
-                div
-                  div(class="text-gray-400") ↓11,930
-                  div USD
-                div
-                  div(class="text-gray-400") ↑54,120
-                  div USD
-                div
-                  div(class="text-gray-400") ★150
-                  div VIP
+            include health_insurance.pug
 
             //- Card Insurance
-            div(class="bg-[#00C853] rounded-2xl p-6  w-full md:w-[250px]")
-              div(class="flex items-center gap-3 mb-4")
-                div(class="p-2 bg-green-500/30 rounded-lg")
-                  svg(class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-                    path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z")
-                div
-                  div(class="font-medium") Card Insurance
-                  div(class="text-sm text-green-100") 1311 Cars
-              div(class="mb-4")
-                div(class="flex items-center gap-2")
-                  span(class="text-3xl font-bold") $3,910
-                  span(class="text-red-500") -4.5%
-              div(class="flex justify-between text-sm")
-                div
-                  div(class="text-green-100") ↓100,930
-                  div USD
-                div
-                  div(class="text-green-100") ↑4,120
-                  div USD
-                div
-                  div(class="text-green-100") ★125
-                  div VIP
+            include card_insurance.pug
+
 
           //- Statistics Section
           div

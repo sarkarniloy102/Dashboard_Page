@@ -5,14 +5,20 @@ html
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     link(href='/styles.css' rel='stylesheet')
     script(src="https://kit.fontawesome.com/533c2217e7.js" crossorigin="anonymous")
+    style.
+      .sidebar {
+        transition: width 0.5s, margin-left 0.5s;
+      }
+      .main-content {
+        transition: margin-left 0.5s;
+      }
     title Dashboard Page
   body
     .container.flex.flex-row
-      aside.h-screen.p-0.m-0
-        include sidebar.pug
       main.flex-grow.p-0.m-0
         include nav.pug
         include table.pug
+
 
 
 
