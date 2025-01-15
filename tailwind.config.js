@@ -1,12 +1,11 @@
 module.exports = {
-  purge: ['./views/**/*.pug'],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './src/views/**/*.{pug,html}',
+    './public/**/*.{html,js}'
+  ],
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-  separator: '_',
-};
+  plugins: [
+  ],
+}

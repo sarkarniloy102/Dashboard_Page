@@ -2,12 +2,13 @@
   "name": "express-pug-tailwind-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "build:css": "tailwindcss -i src/css/app.css -o public/css/output.css --minify",
-    "build:html": "pug src/views -o public",
-    "build": "npm run build:css && npm run build:html"
-  },
+  "build:css": "tailwindcss -i src/css/app.css -o public/css/output.css --minify",
+  "build:html": "pug src/views -o public",
+  "build": "npm run build:css && npm run build:html",
+  "start": "node server.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -31,5 +32,8 @@
     "postcss-cli": "^8.3.1",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.1.2"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
