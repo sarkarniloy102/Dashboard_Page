@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run build:css && nodemon ./bin/www",
-    "start": "NODE_ENV=production npm run build:css && node ./bin/www",
-    "build:css": "postcss src/css/app.css -o assets/styles.css",
-    "lint": "eslint ."
+    "build:css": "tailwindcss -i src/css/app.css -o public/css/output.css --minify",
+    "build:html": "pug src/views -o public",
+    "build": "npm run build:css && npm run build:html"
   },
   "keywords": [],
   "author": "",
